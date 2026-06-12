@@ -2214,6 +2214,7 @@ const translations = {
         accountSettings: 'Account settings',
         account: 'Account',
         general: 'General',
+        editSubscription: 'Edit subscription',
     },
     closeAccountPage: {
         // @context close as a verb, not an adjective
