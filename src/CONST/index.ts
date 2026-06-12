@@ -9609,6 +9609,7 @@ const CONST = {
             COPILOT: 'Account-Copilot',
             SECURITY: 'Account-Security',
             SUBSCRIPTION: 'Account-Subscription',
+            EDIT_SUBSCRIPTION: 'Account-EditSubscription',
             STATUS_PICKER: 'Account-StatusPicker',
         },
         DISCOVER_SECTION: {

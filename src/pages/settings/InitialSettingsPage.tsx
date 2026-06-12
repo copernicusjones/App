@@ -332,7 +332,6 @@ function InitialSettingsPage({currentUserPersonalDetails}: InitialSettingsPagePr
         accountItems.splice(1, 0, {
             translationKey: 'allSettingsScreen.subscription',
             icon: icons.CreditCard,
-            screenName: SCREENS.SETTINGS.SUBSCRIPTION.ROOT,
             brickRoadIndicator:
                 !!privateSubscription?.errors ||
                 hasSubscriptionRedDotError(
@@ -351,6 +350,12 @@ function InitialSettingsPage({currentUserPersonalDetails}: InitialSettingsPagePr
             isBadgeSuccess: !!freeTrialText,
             isBadgeCondensed: !!freeTrialText,
             sentryLabel: CONST.SENTRY_LABEL.ACCOUNT.SUBSCRIPTION,
+            action: () => {},
+        });
+        accountItems.splice(2, 0, {
+            translationKey: 'initialSettingsPage.editSubscription',
+            icon: icons.Pencil,
+            sentryLabel: CONST.SENTRY_LABEL.ACCOUNT.EDIT_SUBSCRIPTION,
             action: () => Navigation.navigate(ROUTES.SETTINGS_SUBSCRIPTION.route),
         });
     }
