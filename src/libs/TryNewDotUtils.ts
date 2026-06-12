@@ -35,6 +35,16 @@ function shouldHideOldAppRedirect(tryNewDot: OnyxEntry<TryNewDot>, isLoadingTryN
     return (shouldRespectMobileLock && isLoadingTryNewDot) || isOldAppRedirectBlocked(tryNewDot, shouldRespectMobileLock);
 }
 
+/**
+ * Determines whether to hide the "Switch to Expensify Classic" button on the Troubleshoot page.
+ * Unlike the general redirect, the Troubleshoot page is a manual escape hatch that should remain
+ * available regardless of NewDot nudge staleness. Only genuine locks (isLockedToNewDot / isLockedToNewApp)
+ * should hide it, not the 30-day staleness gate.
+ */
+function shouldHideTroubleshootOldAppRedirect(tryNewDot: OnyxEntry<TryNewDot>, shouldRespectMobileLock: boolean): boolean {
+    return tryNewDot?.classicRedirect?.isLockedToNewDot === true || (shouldRespectMobileLock && isLockedToNewApp(tryNewDot));
+}
+
 function shouldUseOldApp(tryNewDot: TryNewDot): boolean | undefined {
     if (isLockedToNewApp(tryNewDot)) {
         return false;
@@ -47,4 +57,4 @@ function shouldUseOldApp(tryNewDot: TryNewDot): boolean | undefined {
     return tryNewDot.classicRedirect.dismissed;
 }
 
-export {hasBeenInNewDot30Days, isLockedToNewApp, isOldAppRedirectBlocked, shouldBlockOldAppExit, shouldHideOldAppRedirect, shouldUseOldApp};
+export {hasBeenInNewDot30Days, isLockedToNewApp, isOldAppRedirectBlocked, shouldBlockOldAppExit, shouldHideOldAppRedirect, shouldHideTroubleshootOldAppRedirect, shouldUseOldApp};
